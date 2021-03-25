@@ -1,10 +1,16 @@
 import { argv } from 'process'
 import { readFile, existsSync } from 'fs'
+import { LongException } from './exception/error'
 
 const createLongLexer = (filename) => {
     const fileExists = existsSync(filename)
     if(!fileExists){
-        return null;
+        const fileNotFound = new LongException(
+            `Unable to find ${filename}`,
+            "Check for typos",
+            "FileNotFound"
+        )
+        return fileNotFound;
     }
 }
 
@@ -13,7 +19,7 @@ class LongArgumentParser {
     private length:number;
 
     constructor(argument:Array<string>){
-        this.arguments = argument
+        this.arguments = argument.slice(2, argument.length)
         this.length = this.arguments.length
     }
 
@@ -27,3 +33,6 @@ class LongArgumentParser {
         return undefined
     }
 }
+
+const longArgumentParser = new LongArgumentParser(argv)
+longArgumentParser.parseLongArguments()
