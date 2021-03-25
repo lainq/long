@@ -1,6 +1,8 @@
 import { argv } from 'process'
 import { readFile, existsSync } from 'fs'
+
 import { LongException } from './exception/error'
+import { LongLexicalAnalyser } from "./lexer"
 
 const createLongLexer = (filename) => {
     const fileExists = existsSync(filename)
@@ -12,6 +14,21 @@ const createLongLexer = (filename) => {
         )
         return fileNotFound;
     }
+
+    readFile(filename, (error: NodeJS.ErrnoException, data: Buffer) => {
+        if(error){
+            const exception = new LongException(
+                "An Error occured while reading the file",
+                "Recheck the filename",
+                "ReadFile"
+            )
+            return exception
+        } else {
+            const fileReadData = data.toString()
+            const lexer = new LongLexicalAnalyser(fileReadData)
+        }
+
+    })
 }
 
 class LongArgumentParser {
