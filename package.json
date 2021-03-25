@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/pranavbaburaj/long#readme",
   "dependencies": {
+    "@types/chalk": "^2.2.0",
     "@types/node": "^14.14.35"
   }
 }
