@@ -12,10 +12,13 @@ interface Position {
 }
 
 /**
+ *
+ * 
  * @param {String} fileData The data in the file
  * @param {Position} position The current position of the lexer 
  * in the whole string
  * @param {String | null} character The current character
+ * 
  */
 export class LongLexicalAnalyser {
     private readonly fileData:string
@@ -30,7 +33,12 @@ export class LongLexicalAnalyser {
         console.log(this.character)
     }
 
-    setCurrentCharacter = ():string | null => {
+    /**
+     * @private
+     * 
+     * @returns {String | null} the current character or null
+     */
+    private setCurrentCharacter = ():string | null => {
         if(this.position.position == this.fileData.length){
             this.position.tail = true
             return null;
