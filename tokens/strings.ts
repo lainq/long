@@ -18,14 +18,14 @@ export class LongString {
 
     public createLongString = ():any => {
         let character:string = setCurrentCharacter(this.data, this.pos)
-        let string:string = ""
+        let string:string = ''
         let quotationCount = 0
 
         while(character != null) {
 
             if(character == '"'){
                 quotationCount += 1
-                if(quotationCount > 2){
+                if(quotationCount == 2){
                     break
                 }
             }
@@ -37,7 +37,7 @@ export class LongString {
         }
 
         return {
-            data : string,
+            data : string.toString().slice(1, string.length),
             pos : this.pos
         }
     }
