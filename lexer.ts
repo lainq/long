@@ -104,7 +104,7 @@ export class LongLexicalAnalyser {
           tokenType: stringInfo.data.length == 1 ? 'char' : 'string',
           tokenData: stringInfo.data.toString(),
         });
-      }
+      } 
 
       this.position.position += 1;
       this.character = this.setCurrentCharacter();
