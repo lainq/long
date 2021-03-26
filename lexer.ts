@@ -1,6 +1,6 @@
-import { LongException } from "./exception/error";
-import { LongNumber } from "./tokens/number"
-import { Token } from "./tokens/token"
+import {LongException} from './exception/error';
+import {LongNumber} from './tokens/number';
+import {Token} from './tokens/token';
 /**
  * The position or the index in the
  * string data read from the specified
@@ -15,9 +15,9 @@ interface Position {
 }
 
 export interface TokenAnalyse {
-  position : number
-  data : string
-  lineNumber: number
+  position: number;
+  data: string;
+  lineNumber: number;
 }
 
 /**
@@ -33,10 +33,10 @@ export class LongLexicalAnalyser {
   private readonly fileData: string;
   private position: Position;
   private character: string | null;
-  private exceptions:Array<LongException> = new Array()
-  private tokens:Array<Token> = new Array()
+  private exceptions: Array<LongException> = new Array();
+  private tokens: Array<Token> = new Array();
 
-  private lineNumber:number = 1
+  private lineNumber: number = 1;
   /**
    * @constructor
    * @param fileData the data in the file
@@ -45,7 +45,6 @@ export class LongLexicalAnalyser {
     this.fileData = fileData.toString();
     this.position = {position: 0, tail: false};
     this.character = this.setCurrentCharacter();
-
   }
 
   /**
@@ -64,38 +63,38 @@ export class LongLexicalAnalyser {
 
   /**
    * @public
-   * 
+   *
    * @returns the tokens and list of exceptions
    */
-  public createLexicalAnalyser = ():any => {
-    this.character = this.setCurrentCharacter()
-    while(this.character != null){
-      if(this.character == " "){}
-      else if(Number.isInteger(parseInt(this.character))){
+  public createLexicalAnalyser = (): any => {
+    this.character = this.setCurrentCharacter();
+    while (this.character != null) {
+      if (this.character == ' ') {
+      } else if (Number.isInteger(parseInt(this.character))) {
         // else, if the character converted to an integer
         // is not **NaN**, we take it as a number a try
         // to produce a new number
         const number = new LongNumber({
-          position : this.position.position,
-          data : this.fileData,
-          lineNumber : this.lineNumber
-        })
-        const numberInfo = number.createNumberToken()
+          position: this.position.position,
+          data: this.fileData,
+          lineNumber: this.lineNumber,
+        });
+        const numberInfo = number.createNumberToken();
 
         // updating the position so that the lexer continues
         // to tokenise after the number ends
-        this.position.position = numberInfo.position
+        this.position.position = numberInfo.position;
 
         this.tokens.push({
-          tokenType : LongNumber.createTokenType(numberInfo.number),
-          tokenData : numberInfo.number
-        })
+          tokenType: LongNumber.createTokenType(numberInfo.number),
+          tokenData: numberInfo.number,
+        });
       }
 
-      this.position.position += 1
-      this.character = this.setCurrentCharacter()
+      this.position.position += 1;
+      this.character = this.setCurrentCharacter();
     }
 
-    return this.tokens
-  }
+    return this.tokens;
+  };
 }

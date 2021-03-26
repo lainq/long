@@ -3,7 +3,7 @@ import {red, green} from 'chalk';
 export class LongException {
   private readonly exceptionMessage: string;
   private readonly suggestion: string;
-  private readonly type:string;
+  private readonly type: string;
 
   /**
    * @constructor
@@ -16,7 +16,7 @@ export class LongException {
     this.exceptionMessage = errorMessage.toString();
     this.suggestion = suggestion;
 
-    this.type = type
+    this.type = type;
   }
 
   /**
