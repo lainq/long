@@ -17,6 +17,7 @@ interface Position {
 export interface TokenAnalyse {
   position : number
   data : string
+  lineNumber: number
 }
 
 /**
@@ -71,11 +72,18 @@ export class LongLexicalAnalyser {
     while(this.character != null){
       if(this.character == " "){}
       else if(Number.isInteger(parseInt(this.character))){
+        // else, if the character converted to an integer
+        // is not **NaN**, we take it as a number a try
+        // to produce a new number
         const number = new LongNumber({
           position : this.position.position,
-          data : this.fileData
+          data : this.fileData,
+          lineNumber : this.lineNumber
         })
         const numberInfo = number.createNumberToken()
+
+        // updating the position so that the lexer continues
+        // to tokenise after the number ends
         this.position.position = numberInfo.position
 
         this.tokens.push({
