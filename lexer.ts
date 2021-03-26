@@ -1,5 +1,6 @@
 import { LongException } from "./exception/error";
 import { LongNumber } from "./tokens/number"
+import { Token } from "./tokens/token"
 /**
  * The position or the index in the
  * string data read from the specified
@@ -32,6 +33,7 @@ export class LongLexicalAnalyser {
   private position: Position;
   private character: string | null;
   private exceptions:Array<LongException> = new Array()
+  private tokens:Array<Token> = new Array()
 
   private lineNumber:number = 1
   /**
@@ -76,11 +78,16 @@ export class LongLexicalAnalyser {
         const numberInfo = number.createNumberToken()
         this.position.position = numberInfo.position
 
-        console.log(numberInfo.number)
+        this.tokens.push({
+          tokenType : LongNumber.createTokenType(numberInfo.number),
+          tokenData : numberInfo.number
+        })
       }
 
       this.position.position += 1
       this.character = this.setCurrentCharacter()
     }
+
+    return this.tokens
   }
 }

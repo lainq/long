@@ -24,6 +24,7 @@ export class LongNumber {
                         "Enter a valid number",
                         "DecimalError"
                     ).evokeLongException()
+                    process.exit(1)
                 }
             }
 
@@ -45,4 +46,8 @@ export class LongNumber {
           return this.data[this.position];
         }
     };
+
+    public static createTokenType = (data:string):string => {
+        return data.includes(".") ? "float" : "integer"
+    }
 }

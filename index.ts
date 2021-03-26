@@ -37,6 +37,8 @@ const createLongLexer = (filename: string) => {
       const fileReadData = data.toString();
       const lexer = new LongLexicalAnalyser(fileReadData);
       const tokens = lexer.createLexicalAnalyser()
+
+      console.log(tokens)
     }
   });
 };
