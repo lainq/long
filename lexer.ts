@@ -1,5 +1,6 @@
 import {LongException} from './exception/error';
 import {LongNumber} from './tokens/number';
+import { LongString } from './tokens/strings';
 import {Token} from './tokens/token';
 /**
  * The position or the index in the
@@ -89,6 +90,15 @@ export class LongLexicalAnalyser {
           tokenType: LongNumber.createTokenType(numberInfo.number),
           tokenData: numberInfo.number,
         });
+      } else if(this.character == '"'){
+        const string = new LongString(this.fileData, this.position.position)
+        const stringInfo = string.createLongString()
+
+        this.position.position = stringInfo.pos
+        this.tokens.push({
+          tokenType : stringInfo.data.length == 1 ? "char" : "string",
+          tokenData : stringInfo.data.toString()
+        })
       }
 
       this.position.position += 1;
