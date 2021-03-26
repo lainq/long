@@ -3,6 +3,7 @@ import {red, green} from 'chalk';
 export class LongException {
   private readonly exceptionMessage: string;
   private readonly suggestion: string;
+  private readonly type:string;
 
   /**
    * @constructor
@@ -15,7 +16,7 @@ export class LongException {
     this.exceptionMessage = errorMessage.toString();
     this.suggestion = suggestion;
 
-    this.evokeLongException(type);
+    this.type = type
   }
 
   /**
@@ -26,9 +27,9 @@ export class LongException {
    *
    * @param exceptionType The type of the exception
    */
-  private evokeLongException = (exceptionType: string): void => {
+  public evokeLongException = (): void => {
     const errorOutputMessage = [
-      red(`[${exceptionType}] ${this.exceptionMessage}`),
+      red(`[${this.type}] ${this.exceptionMessage}`),
       green(`[Suggestion] ${this.suggestion}`),
     ];
     for (
