@@ -1,6 +1,6 @@
 import {LongException} from './exception/error';
 import {LongNumber} from './tokens/number';
-import { LongString } from './tokens/strings';
+import {LongString} from './tokens/strings';
 import {Token} from './tokens/token';
 /**
  * The position or the index in the
@@ -90,20 +90,20 @@ export class LongLexicalAnalyser {
           tokenType: LongNumber.createTokenType(numberInfo.number),
           tokenData: numberInfo.number,
         });
-      } else if(this.character == '"'){
+      } else if (this.character == '"') {
         // if the character is a quotation("")[The start of a string]
         // keep track of the string till the string ends with
         // another quotation mark and update the position
         // and also add the new token to the token array
-        
-        const string = new LongString(this.fileData, this.position.position)
-        const stringInfo = string.createLongString()
 
-        this.position.position = stringInfo.pos
+        const string = new LongString(this.fileData, this.position.position);
+        const stringInfo = string.createLongString();
+
+        this.position.position = stringInfo.pos;
         this.tokens.push({
-          tokenType : stringInfo.data.length == 1 ? "char" : "string",
-          tokenData : stringInfo.data.toString()
-        })
+          tokenType: stringInfo.data.length == 1 ? 'char' : 'string',
+          tokenData: stringInfo.data.toString(),
+        });
       }
 
       this.position.position += 1;
