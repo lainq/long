@@ -91,6 +91,11 @@ export class LongLexicalAnalyser {
           tokenData: numberInfo.number,
         });
       } else if(this.character == '"'){
+        // if the character is a quotation("")[The start of a string]
+        // keep track of the string till the string ends with
+        // another quotation mark and update the position
+        // and also add the new token to the token array
+        
         const string = new LongString(this.fileData, this.position.position)
         const stringInfo = string.createLongString()
 

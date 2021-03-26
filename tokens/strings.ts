@@ -16,6 +16,13 @@ export class LongString {
         this.pos = pos
     }
 
+    /**
+     * @public
+     * 
+     * @returns a javascript object of the string data
+     * along with the position for the lexer to continue
+     * tokenising
+     */
     public createLongString = ():any => {
         let character:string = setCurrentCharacter(this.data, this.pos)
         let string:string = ''
@@ -23,6 +30,9 @@ export class LongString {
 
         while(character != null) {
 
+            // check for a second quotation and if
+            // the count of quotations is qual to two(2)
+            // break the loop and return the formed string
             if(character == '"'){
                 quotationCount += 1
                 if(quotationCount == 2){
@@ -31,7 +41,6 @@ export class LongString {
             }
 
             string += character.toString()
-            console.log(quotationCount)
             this.pos += 1
             character = setCurrentCharacter(this.data, this.pos)
         }

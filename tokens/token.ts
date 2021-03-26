@@ -6,6 +6,16 @@ export interface Token {
   tokenData: any;
 }
 
+/**
+ * 
+ * @param {String} data The data inside of the file
+ * @param {number} pos The position of the lexer
+ * 
+ * 
+ * @returns {String | null} return the character at the postion index 
+ * if the postion is not the tail of the string, else ,
+ * return null
+ */
 export const setCurrentCharacter = (data:string, pos:number):string | null => {
   if (data.length == pos) {
     return null
