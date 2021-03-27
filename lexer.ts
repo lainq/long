@@ -1,7 +1,7 @@
 import {LongException} from './exception/error';
 import {LongNumber} from './tokens/number';
 import {LongString} from './tokens/strings';
-import {Token, operators, detectOperatorIdentifier} from './tokens/token';
+import {Token, operators} from './tokens/token';
 /**
  * The position or the index in the
  * string data read from the specified
@@ -112,7 +112,12 @@ export class LongLexicalAnalyser {
       } else if(this.character == "\n"){
         this.lineNumber += 1
       } else if(operators.includes(this.character)){
-        console.log("Yeah")
+        this.tokens.push(
+          {
+            tokenType : "operator",
+            tokenData : this.character
+          }
+        )
       }
 
       this.position.position += 1;
