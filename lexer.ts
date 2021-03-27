@@ -71,8 +71,12 @@ export class LongLexicalAnalyser {
   public createLexicalAnalyser = (): any => {
     this.character = this.setCurrentCharacter();
     while (this.character != null) {
-      if (this.character == ' ') {
-        console.log("_____")
+      console.log(this.character == " ")
+      if (this.character == " ") {
+        if(this.tokens.length > 0){
+          this.command.push(this.tokens)
+          this.tokens = new Array()
+        }
       } else if (Number.isInteger(parseInt(this.character))) {
         // else, if the character converted to an integer
         // is not **NaN**, we take it as a number a try
@@ -86,7 +90,7 @@ export class LongLexicalAnalyser {
 
         // updating the position so that the lexer continues
         // to tokenise after the number ends
-        this.position.position = numberInfo.position;
+        this.position.position = numberInfo.position - 1;
 
         this.tokens.push({
           tokenType: LongNumber.createTokenType(numberInfo.number),
@@ -101,7 +105,7 @@ export class LongLexicalAnalyser {
         const string = new LongString(this.fileData, this.position.position);
         const stringInfo = string.createLongString();
 
-        this.position.position = stringInfo.pos;
+        this.position.position = stringInfo.pos - 1;
         this.tokens.push({
           tokenType: stringInfo.data.length == 1 ? 'char' : 'string',
           tokenData: stringInfo.data.toString(),
@@ -114,6 +118,6 @@ export class LongLexicalAnalyser {
       this.character = this.setCurrentCharacter();
     }
 
-    return this.tokens;
+    return this.command;
   };
 }
