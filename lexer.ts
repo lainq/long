@@ -34,8 +34,9 @@ export class LongLexicalAnalyser {
   private readonly fileData: string;
   private position: Position;
   private character: string | null;
-  private exceptions: Array<LongException> = new Array();
   private tokens: Array<Token> = new Array();
+
+  private command: Array<Array<Token>> = new Array()
 
   private lineNumber: number = 1;
   /**
@@ -104,7 +105,9 @@ export class LongLexicalAnalyser {
           tokenType: stringInfo.data.length == 1 ? 'char' : 'string',
           tokenData: stringInfo.data.toString(),
         });
-      } 
+      } else if(this.character == "\n"){
+        this.lineNumber += 1
+      }
 
       this.position.position += 1;
       this.character = this.setCurrentCharacter();
