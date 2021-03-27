@@ -27,19 +27,13 @@ export const setCurrentCharacter = (
   }
 };
 
-
-
-export const operators = [
-  "+", "-", "/", "*", "^"
-]
+export const operators = ['+', '-', '/', '*', '^'];
 
 export const detectOperatorIdentifier = (operator) => {
-  const keys = ["add", "subtract", "divide", "multiply", "exp"]
-  if(operators.includes(operator)){
-    return keys[operators.indexOf(
-      operator
-    )]
+  const keys = ['add', 'subtract', 'divide', 'multiply', 'exp'];
+  if (operators.includes(operator)) {
+    return keys[operators.indexOf(operator)];
   } else {
-    return null
+    return null;
   }
-}
+};

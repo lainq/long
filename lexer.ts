@@ -36,7 +36,7 @@ export class LongLexicalAnalyser {
   private character: string | null;
   private tokens: Array<Token> = new Array();
 
-  private command: Array<Array<Token>> = new Array()
+  private command: Array<Array<Token>> = new Array();
 
   private lineNumber: number = 1;
   /**
@@ -71,10 +71,10 @@ export class LongLexicalAnalyser {
   public createLexicalAnalyser = (): any => {
     this.character = this.setCurrentCharacter();
     while (this.character != null) {
-      if (this.character == " ") {
-        if(this.tokens.length > 0){
-          this.command.push(this.tokens)
-          this.tokens = new Array()
+      if (this.character == ' ') {
+        if (this.tokens.length > 0) {
+          this.command.push(this.tokens);
+          this.tokens = new Array();
         }
       } else if (Number.isInteger(parseInt(this.character))) {
         // else, if the character converted to an integer
@@ -109,15 +109,13 @@ export class LongLexicalAnalyser {
           tokenType: stringInfo.data.length == 1 ? 'char' : 'string',
           tokenData: stringInfo.data.toString(),
         });
-      } else if(this.character == "\n"){
-        this.lineNumber += 1
-      } else if(operators.includes(this.character)){
-        this.tokens.push(
-          {
-            tokenType : "operator",
-            tokenData : this.character
-          }
-        )
+      } else if (this.character == '\n') {
+        this.lineNumber += 1;
+      } else if (operators.includes(this.character)) {
+        this.tokens.push({
+          tokenType: 'operator',
+          tokenData: this.character,
+        });
       }
 
       this.position.position += 1;

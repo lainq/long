@@ -3,7 +3,7 @@ import {readFile, existsSync} from 'fs';
 
 import {LongException} from './exception/error';
 import {LongLexicalAnalyser} from './lexer';
-import { LongCommand } from './command/command';
+import {LongCommand} from './command/command';
 
 /**
  *
@@ -39,7 +39,7 @@ const createLongLexer = (filename: string) => {
       const lexer = new LongLexicalAnalyser(fileReadData);
       const tokens = lexer.createLexicalAnalyser();
 
-      const commands = new LongCommand(tokens)
+      const commands = new LongCommand(tokens);
     }
   });
 };
