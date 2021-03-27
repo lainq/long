@@ -1,6 +1,6 @@
 # Long
 
-![chat](https://shields.io/discord/808537055177080892)
+[![chat](https://shields.io/discord/808537055177080892)](https://discord.gg/vzcNRVrHR5)
 ![stars](https://img.shields.io/github/stars/pranavbaburaj/long?color=%237289da&label=stars&style=plastic)
 
 > Note : The core language is under contruction
