@@ -13,9 +13,3 @@ The documentation will be prepared once the language is completely implemented
 
 ## License
 The long programming language is licensed under the MIT license . You can read it [here](LICENSE)
-
-<hr>
-<div align="center">
-Created by @pranavbaburaj.
-</div>
-
