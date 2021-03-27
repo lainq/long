@@ -72,6 +72,10 @@ export class LongLexicalAnalyser {
     this.character = this.setCurrentCharacter();
     while (this.character != null) {
       if (this.character == ' ') {
+        // if we find a space character(end of a command)
+        // append the current list of tokens to the list
+        // of commands and clear the token(only if the token list
+        // is not empty)
         if (this.tokens.length > 0) {
           this.command.push(this.tokens);
           this.tokens = new Array();
@@ -110,8 +114,13 @@ export class LongLexicalAnalyser {
           tokenData: stringInfo.data.toString(),
         });
       } else if (this.character == '\n') {
+        // update the line number count if the lexer
+        // encounter a newline character
         this.lineNumber += 1;
       } else if (operators.includes(this.character)) {
+        // if the current character is present in the array
+        // of operators(the character is an operator),
+        // append it to the token list
         this.tokens.push({
           tokenType: 'operator',
           tokenData: this.character,

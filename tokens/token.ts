@@ -27,9 +27,21 @@ export const setCurrentCharacter = (
   }
 };
 
+// The list of operators used for arithmetic calculations
+// "+" for addition, "-" for subtraction .etc
 export const operators = ['+', '-', '/', '*', '^'];
 
-export const detectOperatorIdentifier = (operator) => {
+/**
+ * The function contains a set of keys which are types of
+ * operators in the pattern same as of the operators variable
+ * If the parameter is present in the list of operators
+ * return the corresponding element in the keys list
+ * else, return null
+ *
+ * @param {String} operator The operator that we to check the type of
+ * @returns {String | null} The type of the prameter or null
+ */
+export const detectOperatorIdentifier = (operator): string | null => {
   const keys = ['add', 'subtract', 'divide', 'multiply', 'exp'];
   if (operators.includes(operator)) {
     return keys[operators.indexOf(operator)];

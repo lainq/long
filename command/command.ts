@@ -6,6 +6,11 @@ export class LongCommand {
   private readonly commandList: Array<Array<Token>>;
   private position: Position;
 
+  /**
+   * @constructor
+   * 
+   * @param {Array<Array<Token>>} commands The list of commands to be executed
+   */
   constructor(commands: Array<Array<Token>>) {
     this.commandList = commands;
     this.position = {
@@ -16,6 +21,11 @@ export class LongCommand {
     this.executeCommandList();
   }
 
+  /**
+   * @public
+   * 
+   * Iterates through the list of commands to execute
+   */
   public executeCommandList = (): any => {
     for (
       let commandIteratorIndex = 0;
