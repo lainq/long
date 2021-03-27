@@ -10,7 +10,7 @@ import {Token} from './tokens/token';
  * Contains a position(which is the index),
  * and a tail[boolean] (end of the file or not)
  */
-interface Position {
+export interface Position {
   position: number;
   tail: boolean;
 }
@@ -71,7 +71,6 @@ export class LongLexicalAnalyser {
   public createLexicalAnalyser = (): any => {
     this.character = this.setCurrentCharacter();
     while (this.character != null) {
-      console.log(this.character == " ")
       if (this.character == " ") {
         if(this.tokens.length > 0){
           this.command.push(this.tokens)
