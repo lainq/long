@@ -72,6 +72,7 @@ export class LongLexicalAnalyser {
     this.character = this.setCurrentCharacter();
     while (this.character != null) {
       if (this.character == ' ') {
+        console.log("_____")
       } else if (Number.isInteger(parseInt(this.character))) {
         // else, if the character converted to an integer
         // is not **NaN**, we take it as a number a try
