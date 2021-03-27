@@ -12,7 +12,14 @@ export class LongCommand {
             position : 0,
             tail : this.commandList.length == 0
         }
+        
+        this.executeCommandList()
+    }
 
-        console.log(this.commandList)
+    public executeCommandList = ():any => {
+        for(let commandIteratorIndex = 0; commandIteratorIndex < this.commandList.length; commandIteratorIndex++){
+            const currentCommand = this.commandList[commandIteratorIndex]
+            console.log(currentCommand)
+        }
     }
 }

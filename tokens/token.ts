@@ -26,3 +26,20 @@ export const setCurrentCharacter = (
     return data[pos];
   }
 };
+
+
+
+export const operators = [
+  "+", "-", "/", "*", "^"
+]
+
+export const detectOperatorIdentifier = (operator) => {
+  const keys = ["add", "subtract", "divide", "multiply", "exp"]
+  if(operators.includes(operator)){
+    return keys[operators.indexOf(
+      operator
+    )]
+  } else {
+    return null
+  }
+}
