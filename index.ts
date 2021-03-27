@@ -1,6 +1,6 @@
 import {argv} from 'process';
 import {readFile, existsSync} from 'fs';
-import {magentaBright, cyan} from 'chalk'
+import {magentaBright, cyan} from 'chalk';
 
 import {LongException} from './exception/error';
 import {LongLexicalAnalyser} from './lexer';
@@ -73,24 +73,29 @@ class LongArgumentParser {
     } else {
       if (this.arguments[0].endsWith('.long')) {
         const coderunner = createLongLexer(this.arguments[0]);
-      } else if (this.arguments[0] == "help"){
-        const outputLinks = [{
-          text : "Github",
-          link : "https://github.com/pranavbaburaj"
-        }, {
-          text : "Discord",
-          link : "https://discord.gg/vzcNRVrHR5"
-        }, {
-          text : "Discussions",
-          link : "https://github.com/pranavbaburaj/long/discussions"
-        }, {
-          text : "Report a bug",
-          link : "https://github.com/pranavbaburaj/long/issues"
-        }]
-        console.log(magentaBright("Long Help Center \n"))
-        for(let index=0; index < outputLinks.length; index++){
-          const link = outputLinks[index]
-          console.log(cyan(`[${link.text}](${link.link})`))
+      } else if (this.arguments[0] == 'help') {
+        const outputLinks = [
+          {
+            text: 'Github',
+            link: 'https://github.com/pranavbaburaj',
+          },
+          {
+            text: 'Discord',
+            link: 'https://discord.gg/vzcNRVrHR5',
+          },
+          {
+            text: 'Discussions',
+            link: 'https://github.com/pranavbaburaj/long/discussions',
+          },
+          {
+            text: 'Report a bug',
+            link: 'https://github.com/pranavbaburaj/long/issues',
+          },
+        ];
+        console.log(magentaBright('Long Help Center \n'));
+        for (let index = 0; index < outputLinks.length; index++) {
+          const link = outputLinks[index];
+          console.log(cyan(`[${link.text}](${link.link})`));
         }
       }
     }
