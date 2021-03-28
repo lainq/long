@@ -29,7 +29,7 @@ export const setCurrentCharacter = (
 
 // The list of operators used for arithmetic calculations
 // "+" for addition, "-" for subtraction .etc
-export const operators = ['+', '-', '/', '*', '^'];
+export const operators = ['+', '-', '/', '*']
 
 /**
  * The function contains a set of keys which are types of
@@ -42,7 +42,7 @@ export const operators = ['+', '-', '/', '*', '^'];
  * @returns {String | null} The type of the prameter or null
  */
 export const detectOperatorIdentifier = (operator): string | null => {
-  const keys = ['add', 'subtract', 'divide', 'multiply', 'exp'];
+  const keys = ['add', 'subtract', 'divide', 'multiply'];
   if (operators.includes(operator)) {
     return keys[operators.indexOf(operator)];
   } else {

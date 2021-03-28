@@ -62,7 +62,24 @@ export class LongCommand {
             ))
           }
         } else if(currentToken.tokenType == "operator"){
-          const
+          if(tokenIndex == 0){
+            const exception = new LongException(
+              "Cannot have an operator without a number",
+              "Try adding an number",
+              "NumberError"
+            ).evokeLongException()
+
+            continue
+          }
+          const previousToken = currentCommand[tokenIndex - 1]
+          if(!(previousToken.tokenType == "number")){
+            const exception = new LongException(
+              `An operator[${currentToken.tokenData}] cannot be followed by another operator[${previousToken.tokenData}]`,
+              "Try adding a number",
+              "OperatorError"
+            ).evokeLongException()
+            continue
+          }
         }
 
       }
