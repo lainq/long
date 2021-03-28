@@ -4,7 +4,7 @@ import {Position} from '../lexer';
 
 export class LongCommand {
   private readonly commandList: Array<Array<Token>>;
-  private position: Position;
+  public currentASCIICharacter:number = 0
 
   /**
    * @constructor
@@ -13,10 +13,6 @@ export class LongCommand {
    */
   constructor(commands: Array<Array<Token>>) {
     this.commandList = commands;
-    this.position = {
-      position: 0,
-      tail: this.commandList.length == 0,
-    };
 
     this.executeCommandList();
   }
@@ -39,6 +35,11 @@ export class LongCommand {
         tokenIndex++
       ) {
         const currentToken = currentCommand[tokenIndex];
+        const tailToken = tokenIndex == (currentCommand.length - 1)
+        
+        if(currentToken.tokenType == "number"){
+          
+        }
       }
     }
   };

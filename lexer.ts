@@ -96,7 +96,7 @@ export class LongLexicalAnalyser {
         this.position.position = numberInfo.position - 1;
 
         this.tokens.push({
-          tokenType: LongNumber.createTokenType(numberInfo.number),
+          tokenType: "number",
           tokenData: numberInfo.number,
         });
       } else if (this.character == '"') {
