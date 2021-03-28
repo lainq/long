@@ -1,7 +1,7 @@
 import {LongException} from './exception/error';
 import {LongNumber} from './tokens/number';
 import {LongString} from './tokens/strings';
-import {Token, operators} from './tokens/token';
+import {Token, operators, builtinFunctions} from './tokens/token';
 /**
  * The position or the index in the
  * string data read from the specified
@@ -76,7 +76,7 @@ export class LongLexicalAnalyser {
         // append the current list of tokens to the list
         // of commands and clear the token(only if the token list
         // is not empty)
-        if (this.tokens.length > 0) {
+        if (this.tokens.length >= 0) {
           this.command.push(this.tokens);
           this.tokens = new Array();
         }
@@ -125,12 +125,15 @@ export class LongLexicalAnalyser {
           tokenType: 'operator',
           tokenData: this.character,
         });
+      } else if(Object.keys(builtinFunctions).includes(this.character)){
+        console.log("LOL")
       }
 
       this.position.position += 1;
       this.character = this.setCurrentCharacter();
     }
 
+    console.log(this.command)
     return this.command;
   };
 }

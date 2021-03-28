@@ -80,8 +80,9 @@ export class LongCommand {
             ).evokeLongException()
             continue
           }
+        } else {
+          console.log(currentToken)
         }
-
       }
     }
   };

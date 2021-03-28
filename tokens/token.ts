@@ -49,3 +49,9 @@ export const detectOperatorIdentifier = (operator): string | null => {
     return null;
   }
 };
+
+export const builtinFunctions = {
+  "#" : {type:"print"},
+  "^" : {type:"clear"},
+  "!" : {type:"valid"}
+}
