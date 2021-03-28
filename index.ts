@@ -5,6 +5,7 @@ import {magentaBright, cyan} from 'chalk';
 import {LongException} from './exception/error';
 import {LongLexicalAnalyser} from './lexer';
 import {LongCommand} from './command/command';
+import { LongProject } from './project/project';
 
 /**
  *
@@ -98,7 +99,7 @@ class LongArgumentParser {
           console.log(cyan(`[${link.text}] (${link.link})`));
         }
       } else if(this.arguments[0] == "new"){
-        
+        const project = LongProject.createLongProject()
       }
     }
     return undefined;
