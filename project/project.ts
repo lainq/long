@@ -28,8 +28,25 @@ export class LongProject {
     this.projectName = name;
     this.projectDirectory = this.isValidDirectory(directory);
 
-    console.log(this.projectDirectory);
+    this.createProjectFiles()
   }
+
+  public createProjectFiles = () => {
+    const files = {config:join(
+      this.projectDirectory, "long.json"
+    ), main:join(
+      this.projectDirectory, "index.ts"
+    )}
+
+    const keys = Object.keys(files)
+    for(const key in keys){
+      const currentKey = files[keys[key]]
+      if (keys[key] == "main"){
+        
+      }
+    }
+  }
+  
 
   /**
    * @public
