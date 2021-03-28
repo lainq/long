@@ -6,7 +6,6 @@ import {readdirSync, mkdir, writeFile} from 'fs';
 
 import {LongException} from '../exception/error';
 
-
 // input interface used to get the
 // project name as an input from the
 // user
@@ -29,37 +28,56 @@ export class LongProject {
     this.projectName = name;
     this.projectDirectory = this.isValidDirectory(directory);
 
-    this.createProjectFiles()
+    this.createProjectFiles();
   }
 
+  /**
+   * @public
+   *
+   * Loop through the dict of files to
+   * be created and create files accordng
+   * to their keys
+   */
   public createProjectFiles = () => {
-    const files = {config:join(
-      this.projectDirectory, "long.json"
-    ), main:join(
-      this.projectDirectory, "index.ts"
-    )}
+    const files = {
+      config: join(this.projectDirectory, 'long.json'),
+      main: join(this.projectDirectory, 'index.ts'),
+    };
 
-    const keys = Object.keys(files)
-    for(const key in keys){
-      const currentKey = files[keys[key]]
-      if (keys[key] == "main"){
-        this.createNewFile(currentKey, "72+#29+#7+##3+#79-# 55+#24+#3+#6-#8-#68-#1+# ;")
+    const keys = Object.keys(files);
+    for (const key in keys) {
+      const currentKey = files[keys[key]];
+      if (keys[key] == 'main') {
+        this.createNewFile(
+          currentKey,
+          '72+#29+#7+##3+#79-# 55+#24+#3+#6-#8-#68-#1+# ;'
+        );
       }
     }
-  }
+  };
 
+  /**
+   * @public
+   *
+   * Recieves the filename and data to write as the parameters
+   * and write the data to the file
+   *
+   * If any error occurs throw an UnknownLongException
+   *
+   * @param fileName The name of the file
+   * @param fileData The data to write
+   */
   public createNewFile = (fileName, fileData) => {
     writeFile(fileName, fileData, (error) => {
-      if(error){
+      if (error) {
         const exception = new LongException(
-          "An error occured",
-          "Try again",
-          "UnknownError"
-        ).evokeLongException()
+          'An error occured',
+          'Try again',
+          'UnknownError'
+        ).evokeLongException();
       }
-    })
-  }
-  
+    });
+  };
 
   /**
    * @public
