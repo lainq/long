@@ -29,7 +29,7 @@ export const setCurrentCharacter = (
 
 // The list of operators used for arithmetic calculations
 // "+" for addition, "-" for subtraction .etc
-export const operators = ['+', '-', '/', '*']
+export const operators = ['+', '-', '/', '*'];
 
 /**
  * The function contains a set of keys which are types of
@@ -53,10 +53,10 @@ export const detectOperatorIdentifier = (operator): string | null => {
 /**
  * The builtin functions present in long
  * esoteric language
- * 
+ *
  * (!) stands for clear and (#) stands for print
  */
 export const builtinFunctions = {
-  "#" : {type:"print"},
-  "!" : {type:"clear"}
-}
+  '#': {type: 'print'},
+  '!': {type: 'clear'},
+};

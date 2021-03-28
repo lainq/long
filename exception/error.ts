@@ -40,6 +40,6 @@ export class LongException {
       const currentErrorMessage = errorOutputMessage[errorIndex];
       console.log(currentErrorMessage);
     }
-    process.exit()
+    process.exit();
   };
 }

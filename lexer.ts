@@ -96,7 +96,7 @@ export class LongLexicalAnalyser {
         this.position.position = numberInfo.position - 1;
 
         this.tokens.push({
-          tokenType: "number",
+          tokenType: 'number',
           tokenData: numberInfo.number,
         });
       } else if (this.character == '"') {
@@ -125,14 +125,14 @@ export class LongLexicalAnalyser {
           tokenType: 'operator',
           tokenData: this.character,
         });
-      } else if(Object.keys(builtinFunctions).includes(this.character)){
+      } else if (Object.keys(builtinFunctions).includes(this.character)) {
         // if the character is present in the keys of
         // the builtin character(#, !) push to
         // token array with the type specified in the dict
         this.tokens.push({
-          tokenType : builtinFunctions[this.character].type,
-          tokenData : this.character
-        })
+          tokenType: builtinFunctions[this.character].type,
+          tokenData: this.character,
+        });
       }
 
       this.position.position += 1;

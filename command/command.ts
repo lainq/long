@@ -52,57 +52,61 @@ export class LongCommand {
               'Try adding an operator',
               'UnknownOperator'
             ).evokeLongException();
-            continue
+            continue;
           }
 
-          const nextToken = currentCommand[tokenIndex + 1]
+          const nextToken = currentCommand[tokenIndex + 1];
           // An operator should be followed by an operator
           // if so, evaluate the operation
           // else, throw an exception
-          if(nextToken.tokenType != "operator"){
+          if (nextToken.tokenType != 'operator') {
             const exception = new LongException(
               'A number without an operator',
               'Try adding an operator',
               'UnknownOperator'
             ).evokeLongException();
-            continue
+            continue;
           } else {
-            const increment = `${this.currentASCIICharacter}${nextToken.tokenData.toString()}${parseInt(currentToken.tokenData)}`
-            this.currentASCIICharacter = parseInt(eval(
-              increment
-            ))
+            const increment = `${
+              this.currentASCIICharacter
+            }${nextToken.tokenData.toString()}${parseInt(
+              currentToken.tokenData
+            )}`;
+            this.currentASCIICharacter = parseInt(eval(increment));
           }
-        } else if(currentToken.tokenType == "operator"){
+        } else if (currentToken.tokenType == 'operator') {
           // if the current token is an operator
           // make sure the previous token is an operator
           // and that the operator is not the first token
           // of the command and throw errors accordingly
-          if(tokenIndex == 0){
+          if (tokenIndex == 0) {
             const exception = new LongException(
-              "Cannot have an operator without a number",
-              "Try adding an number",
-              "NumberError"
-            ).evokeLongException()
+              'Cannot have an operator without a number',
+              'Try adding an number',
+              'NumberError'
+            ).evokeLongException();
 
-            continue
+            continue;
           }
-          const previousToken = currentCommand[tokenIndex - 1]
-          if(!(previousToken.tokenType == "number")){
+          const previousToken = currentCommand[tokenIndex - 1];
+          if (!(previousToken.tokenType == 'number')) {
             const exception = new LongException(
               `An operator[${currentToken.tokenData}] cannot be followed by another operator[${previousToken.tokenData}]`,
-              "Try adding a number",
-              "OperatorError"
-            ).evokeLongException()
-            continue
+              'Try adding a number',
+              'OperatorError'
+            ).evokeLongException();
+            continue;
           }
         } else {
           // else, check whether the token
           // is among the builtin functions
-          if(currentToken.tokenType == "print"){
-            const asciiCharacter = String.fromCharCode(this.currentASCIICharacter)
-            console.log(asciiCharacter)
-          } else if(currentToken.tokenType == "clear"){
-            this.currentASCIICharacter = 0
+          if (currentToken.tokenType == 'print') {
+            const asciiCharacter = String.fromCharCode(
+              this.currentASCIICharacter
+            );
+            console.log(asciiCharacter);
+          } else if (currentToken.tokenType == 'clear') {
+            this.currentASCIICharacter = 0;
           }
         }
       }
