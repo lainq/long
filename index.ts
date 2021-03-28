@@ -95,8 +95,10 @@ class LongArgumentParser {
         console.log(magentaBright('Long Help Center \n'));
         for (let index = 0; index < outputLinks.length; index++) {
           const link = outputLinks[index];
-          console.log(cyan(`[${link.text}](${link.link})`));
+          console.log(cyan(`[${link.text}] (${link.link})`));
         }
+      } else if(this.arguments[0] == "new"){
+        
       }
     }
     return undefined;

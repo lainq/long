@@ -1,3 +1,5 @@
+import {stdout} from 'process'
+
 import {LongException} from '../exception/error';
 import {Token} from '../tokens/token';
 import {Position} from '../lexer';
@@ -104,7 +106,7 @@ export class LongCommand {
             const asciiCharacter = String.fromCharCode(
               this.currentASCIICharacter
             );
-            console.log(asciiCharacter);
+            stdout.write(asciiCharacter);
           } else if (currentToken.tokenType == 'clear') {
             this.currentASCIICharacter = 0;
           }
