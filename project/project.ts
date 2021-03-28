@@ -2,9 +2,10 @@ import {stdout, stdin, cwd} from 'process';
 import {createInterface} from 'readline';
 import {cyan} from 'chalk';
 import {join} from 'path';
-import {readdirSync, mkdir} from 'fs';
+import {readdirSync, mkdir, writeFile} from 'fs';
 
 import {LongException} from '../exception/error';
+
 
 // input interface used to get the
 // project name as an input from the
@@ -42,9 +43,21 @@ export class LongProject {
     for(const key in keys){
       const currentKey = files[keys[key]]
       if (keys[key] == "main"){
-        
+        this.createNewFile(currentKey, "72+#29+#7+##3+#79-# 55+#24+#3+#6-#8-#68-#1+# ;")
       }
     }
+  }
+
+  public createNewFile = (fileName, fileData) => {
+    writeFile(fileName, fileData, (error) => {
+      if(error){
+        const exception = new LongException(
+          "An error occured",
+          "Try again",
+          "UnknownError"
+        ).evokeLongException()
+      }
+    })
   }
   
 
