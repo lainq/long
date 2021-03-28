@@ -28,16 +28,24 @@ export class LongCommand {
       commandIteratorIndex < this.commandList.length;
       commandIteratorIndex++
     ) {
+      // loop through each command(code which is separated by a space)
       const currentCommand = this.commandList[commandIteratorIndex];
       for (
         let tokenIndex = 0;
         tokenIndex < currentCommand.length;
         tokenIndex++
       ) {
+        // the current token in the current command
         const currentToken = currentCommand[tokenIndex];
+        // checks if the current token is the last
+        // token in the current command
         const tailToken = tokenIndex == currentCommand.length - 1;
 
         if (currentToken.tokenType == 'number') {
+          // numbers cannot be at the tail of a command
+          // because number should be followed by an operator
+          // if the number is at the tail, the number follows
+          // no operator, if so throw an exception
           if (tailToken) {
             const exception = new LongException(
               'A number without an operator',
@@ -48,6 +56,9 @@ export class LongCommand {
           }
 
           const nextToken = currentCommand[tokenIndex + 1]
+          // An operator should be followed by an operator
+          // if so, evaluate the operation
+          // else, throw an exception
           if(nextToken.tokenType != "operator"){
             const exception = new LongException(
               'A number without an operator',
@@ -62,6 +73,10 @@ export class LongCommand {
             ))
           }
         } else if(currentToken.tokenType == "operator"){
+          // if the current token is an operator
+          // make sure the previous token is an operator
+          // and that the operator is not the first token
+          // of the command and throw errors accordingly
           if(tokenIndex == 0){
             const exception = new LongException(
               "Cannot have an operator without a number",
@@ -81,6 +96,8 @@ export class LongCommand {
             continue
           }
         } else {
+          // else, check whether the token
+          // is among the builtin functions
           if(currentToken.tokenType == "print"){
             const asciiCharacter = String.fromCharCode(this.currentASCIICharacter)
             console.log(asciiCharacter)

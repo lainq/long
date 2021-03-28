@@ -50,6 +50,12 @@ export const detectOperatorIdentifier = (operator): string | null => {
   }
 };
 
+/**
+ * The builtin functions present in long
+ * esoteric language
+ * 
+ * (!) stands for clear and (#) stands for print
+ */
 export const builtinFunctions = {
   "#" : {type:"print"},
   "!" : {type:"clear"}

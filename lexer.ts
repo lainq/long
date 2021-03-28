@@ -126,6 +126,9 @@ export class LongLexicalAnalyser {
           tokenData: this.character,
         });
       } else if(Object.keys(builtinFunctions).includes(this.character)){
+        // if the character is present in the keys of
+        // the builtin character(#, !) push to
+        // token array with the type specified in the dict
         this.tokens.push({
           tokenType : builtinFunctions[this.character].type,
           tokenData : this.character
