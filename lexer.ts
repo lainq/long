@@ -126,14 +126,16 @@ export class LongLexicalAnalyser {
           tokenData: this.character,
         });
       } else if(Object.keys(builtinFunctions).includes(this.character)){
-        console.log("LOL")
+        this.tokens.push({
+          tokenType : builtinFunctions[this.character].type,
+          tokenData : this.character
+        })
       }
 
       this.position.position += 1;
       this.character = this.setCurrentCharacter();
     }
 
-    console.log(this.command)
     return this.command;
   };
 }

@@ -81,7 +81,12 @@ export class LongCommand {
             continue
           }
         } else {
-          console.log(currentToken)
+          if(currentToken.tokenType == "print"){
+            const asciiCharacter = String.fromCharCode(this.currentASCIICharacter)
+            console.log(asciiCharacter)
+          } else if(currentToken.tokenType == "clear"){
+            this.currentASCIICharacter = 0
+          }
         }
       }
     }

@@ -52,6 +52,5 @@ export const detectOperatorIdentifier = (operator): string | null => {
 
 export const builtinFunctions = {
   "#" : {type:"print"},
-  "^" : {type:"clear"},
-  "!" : {type:"valid"}
+  "!" : {type:"clear"}
 }
