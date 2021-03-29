@@ -1,4 +1,4 @@
-import {stdout} from 'process'
+import {stdout} from 'process';
 
 import {LongException} from '../exception/error';
 import {Token} from '../tokens/token';
@@ -113,6 +113,6 @@ export class LongCommand {
         }
       }
     }
-    process.exit()
+    process.exit();
   };
 }

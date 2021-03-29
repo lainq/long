@@ -29,7 +29,9 @@ export class LongProject {
     this.projectDirectory = this.isValidDirectory(directory);
 
     this.createProjectFiles();
-    stdout.write(green(`Project successfully created at ${this.projectDirectory}`))
+    stdout.write(
+      green(`Project successfully created at ${this.projectDirectory}`)
+    );
   }
 
   /**
@@ -58,7 +60,7 @@ export class LongProject {
           currentKey,
           '72+#29+#7+##3+#79-# 55+#24+#3+#6-#8-#68-#1+# ;'
         );
-      } else if(keys[key] == "config"){
+      } else if (keys[key] == 'config') {
         this.createNewFile(
           currentKey,
           this.createConfigFile(
@@ -66,30 +68,34 @@ export class LongProject {
             this.projectDirectory,
             files.main
           )
-        )
+        );
       }
     }
   };
-  
+
   /**
    * @public
-   * 
-   * Takes the information about the project as the 
+   *
+   * Takes the information about the project as the
    * parameters and generate the data for a config file
    * in the form of stringified json
-   * 
+   *
    * @param {String} name The name of the project
    * @param {String} directory The directory
    * @param {String} enrtyPoint The entry point to run
    * @returns {String} The stringified javascript object
    */
-  public createConfigFile = (name:string, directory:string, enrtyPoint:string):string => {
+  public createConfigFile = (
+    name: string,
+    directory: string,
+    enrtyPoint: string
+  ): string => {
     return JSON.stringify({
-      name : name,
-      path : directory,
-      main : enrtyPoint
-    })
-  }
+      name: name,
+      path: directory,
+      main: enrtyPoint,
+    });
+  };
 
   /**
    * @public
