@@ -2,8 +2,8 @@ import { join } from "path"
 import {existsSync, readFileSync} from 'fs'
 
 import { LongException } from "../exception/error";
-import { readFile } from "node:fs";
-import { Console } from "console";
+import { LongLexicalAnalyser } from '../lexer'
+import { LongCommand } from '../command/command' 
 
 
 export class LongApplication {
@@ -24,20 +24,39 @@ export class LongApplication {
             ).evokeLongException()
         }
 
-        const enrtyPoint = this.readConfigFile(this.config)
+        const entryPoint = this.readConfigFile(this.config)
+        if(!this.configExists(entryPoint)){
+            const exception = new LongException(
+                'An Error occured while reading the file',
+                'Recheck the filename',
+                'ReadFile'
+              ).evokeLongException()
+        }
+        
+        this.runApplication(entryPoint)
+
         process.exit()
+    }
+
+    private runApplication = (path:string):void => {
+        const data = readFileSync(path)
+        const fileReadData = data.toString();
+        const lexer = new LongLexicalAnalyser(fileReadData);
+        const tokens = lexer.createLexicalAnalyser();
+
+        const commands = new LongCommand(tokens);
     }
 
     private readConfigFile = (configPath:string):string => {
         const data = JSON.parse(readFileSync(configPath).toString())
-        console.log(data)
-        return "lol"
+        return data.main.toString()
     }
 
     private configExists = (path:string):boolean => {
         try {
             return existsSync(path)
           } catch(err) {
+              return false
         }
         return false
     }

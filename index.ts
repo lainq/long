@@ -18,7 +18,7 @@ import { LongApplication } from './project/run';
  *
  * @returns {undefined | LongException} undefine dor an error message
  */
-const createLongLexer = (filename: string) => {
+export const createLongLexer = (filename: string) => {
   const fileExists = existsSync(filename);
   if (!fileExists) {
     const fileNotFound = new LongException(
@@ -35,9 +35,10 @@ const createLongLexer = (filename: string) => {
         'An Error occured while reading the file',
         'Recheck the filename',
         'ReadFile'
-      );
+      ).evokeLongException();
       return exception;
     } else {
+      
       const fileReadData = data.toString();
       const lexer = new LongLexicalAnalyser(fileReadData);
       const tokens = lexer.createLexicalAnalyser();
