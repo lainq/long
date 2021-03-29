@@ -1,4 +1,4 @@
-import {argv} from 'process';
+import {argv, cwd} from 'process';
 import {readFile, existsSync} from 'fs';
 import {magentaBright, cyan} from 'chalk';
 
@@ -6,6 +6,7 @@ import {LongException} from './exception/error';
 import {LongLexicalAnalyser} from './lexer';
 import {LongCommand} from './command/command';
 import {LongProject} from './project/project';
+import { LongApplication } from './project/run';
 
 /**
  *
@@ -101,6 +102,7 @@ class LongArgumentParser {
       } else if (this.arguments[0] == 'new') {
         const project = LongProject.createLongProject();
       } else if(this.arguments[0] == "run"){
+        const application = new LongApplication(cwd())
       }
     }
     return undefined;
