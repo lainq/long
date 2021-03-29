@@ -1,5 +1,5 @@
 {
-  "name": "long",
+  "name": "@pranavbaburaj/long",
   "version": "1.0.0",
   "description": "A simple programming language :winK;",
   "main": "index.ts",
@@ -17,7 +17,12 @@
   },
   "homepage": "https://github.com/pranavbaburaj/long#readme",
   "dependencies": {
-    "@types/chalk": "^2.2.0",
-    "@types/node": "^14.14.35"
-  }
+    "chalk": "^2.2.0"
+  },
+  "bin": {
+    "long": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ]
 }
