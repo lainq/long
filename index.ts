@@ -6,7 +6,7 @@ import {LongException} from './exception/error';
 import {LongLexicalAnalyser} from './lexer';
 import {LongCommand} from './command/command';
 import {LongProject} from './project/project';
-import { LongApplication } from './project/run';
+import {LongApplication} from './project/run';
 
 /**
  *
@@ -38,7 +38,6 @@ export const createLongLexer = (filename: string) => {
       ).evokeLongException();
       return exception;
     } else {
-      
       const fileReadData = data.toString();
       const lexer = new LongLexicalAnalyser(fileReadData);
       const tokens = lexer.createLexicalAnalyser();
@@ -102,8 +101,8 @@ class LongArgumentParser {
         }
       } else if (this.arguments[0] == 'new') {
         const project = LongProject.createLongProject();
-      } else if(this.arguments[0] == "run"){
-        const application = new LongApplication(cwd())
+      } else if (this.arguments[0] == 'run') {
+        const application = new LongApplication(cwd());
       }
     }
     return undefined;

@@ -45,6 +45,11 @@ export class LongProject {
       main: join(this.projectDirectory, 'index.long'),
     };
 
+    // if the file key is main(enrty-point)
+    // create the file with a helloworld program
+    // else if, it is config(config-file)
+    // get the config data and write into it
+
     const keys = Object.keys(files);
     for (const key in keys) {
       const currentKey = files[keys[key]];
@@ -66,7 +71,19 @@ export class LongProject {
     }
   };
   
-  public createConfigFile = (name, directory, enrtyPoint) => {
+  /**
+   * @public
+   * 
+   * Takes the information about the project as the 
+   * parameters and generate the data for a config file
+   * in the form of stringified json
+   * 
+   * @param {String} name The name of the project
+   * @param {String} directory The directory
+   * @param {String} enrtyPoint The entry point to run
+   * @returns {String} The stringified javascript object
+   */
+  public createConfigFile = (name:string, directory:string, enrtyPoint:string):string => {
     return JSON.stringify({
       name : name,
       path : directory,
