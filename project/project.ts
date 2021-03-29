@@ -1,6 +1,6 @@
 import {stdout, stdin, cwd} from 'process';
 import {createInterface} from 'readline';
-import {cyan} from 'chalk';
+import {cyan, green} from 'chalk';
 import {join} from 'path';
 import {readdirSync, mkdir, writeFile} from 'fs';
 
@@ -29,6 +29,7 @@ export class LongProject {
     this.projectDirectory = this.isValidDirectory(directory);
 
     this.createProjectFiles();
+    stdout.write(green(`Project successfully created at ${this.projectDirectory}`))
   }
 
   /**

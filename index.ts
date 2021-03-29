@@ -100,6 +100,7 @@ class LongArgumentParser {
         }
       } else if (this.arguments[0] == 'new') {
         const project = LongProject.createLongProject();
+      } else if(this.arguments[0] == "run"){
       }
     }
     return undefined;
