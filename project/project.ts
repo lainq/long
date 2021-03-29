@@ -41,7 +41,7 @@ export class LongProject {
   public createProjectFiles = () => {
     const files = {
       config: join(this.projectDirectory, 'long.json'),
-      main: join(this.projectDirectory, 'index.ts'),
+      main: join(this.projectDirectory, 'index.long'),
     };
 
     const keys = Object.keys(files);
@@ -52,9 +52,26 @@ export class LongProject {
           currentKey,
           '72+#29+#7+##3+#79-# 55+#24+#3+#6-#8-#68-#1+# ;'
         );
+      } else if(keys[key] == "config"){
+        this.createNewFile(
+          currentKey,
+          this.createConfigFile(
+            this.projectName,
+            this.projectDirectory,
+            files.main
+          )
+        )
       }
     }
   };
+  
+  public createConfigFile = (name, directory, enrtyPoint) => {
+    return JSON.stringify({
+      name : name,
+      path : directory,
+      main : enrtyPoint
+    })
+  }
 
   /**
    * @public
