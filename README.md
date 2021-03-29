@@ -6,6 +6,12 @@
 
 A simple, elegant, useless, minimal esoteric programming language created for fun
 
+
+> ### An example
+> ```
+> 72+#29+#7+##3+#79-# 55+#24+#3+#6-#8-#68-#1+# ;
+> ```
+
 ## Documentation
 The documentation is under contruction
 
