@@ -6,6 +6,7 @@ import {readdirSync, mkdir, writeFile} from 'fs';
 
 import {LongException} from '../exception/error';
 
+
 // input interface used to get the
 // project name as an input from the
 // user
