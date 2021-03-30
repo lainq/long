@@ -103,6 +103,8 @@ class LongArgumentParser {
         const project = LongProject.createLongProject();
       } else if (this.arguments[0] == 'run') {
         const application = new LongApplication(cwd());
+      } else if(this.arguments[0] == "list"){
+        
       }
     }
     return undefined;

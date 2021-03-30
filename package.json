@@ -1,6 +1,6 @@
 {
   "name": "@pranavbaburaj/long",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple programming language :winK;",
   "main": "index.ts",
   "scripts": {
@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/pranavbaburaj/long#readme",
   "dependencies": {
-    "chalk": "^2.2.0"
+    "@types/chalk": "^2.2.0",
+    "@types/node": "^14.14.37",
+    "chalk": "^4.1.0",
+    "diskdb": "^0.1.17"
   },
   "bin": {
     "long": "./dist/index.js"
