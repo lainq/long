@@ -1,4 +1,4 @@
-import {argv, cwd} from 'process';
+import {argv, cwd, stdout} from 'process';
 import {readFile, existsSync} from 'fs';
 import {magentaBright, cyan} from 'chalk';
 
@@ -8,7 +8,7 @@ import {LongCommand} from './command/command';
 import {LongProject} from './project/project';
 import {LongApplication} from './project/run';
 import {LongProjectList} from './project/list';
-import {createLongInteractiveRepl} from './shell/shell'
+import {createLongInteractiveRepl} from './shell/shell.js'
 
 /**
  *
@@ -109,7 +109,13 @@ class LongArgumentParser {
       } else if (this.arguments[0] == 'list') {
         const list = new LongProjectList();
       } else if(this.arguments[0] == "shell"){
-        createLongInteractiveRepl()
+        createLongInteractiveRepl((data) => {
+          const lexer = new LongLexicalAnalyser(data);
+          const tokens = lexer.createLexicalAnalyser();
+
+          const commands = new LongCommand(tokens);
+          stdout.write("\n")
+        })
       }
     }
     return undefined;
