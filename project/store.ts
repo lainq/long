@@ -1,6 +1,7 @@
 import { join } from "path";
 import {writeFileSync, existsSync, readFileSync, mkdirSync} from 'fs'
 
+
 import { LongException } from '../exception/error'
 
 export class LongProjectStore {
@@ -33,7 +34,7 @@ export class LongProjectStore {
             }))
         }
         
-        const data = JSON.parse(readFileSync(store).toString())
+        let data = JSON.parse(readFileSync(store).toString())
         if(!Object.keys(data).includes("projects")){
             const exception = new LongException(
                 "Process aborted due to an internal error",
@@ -41,8 +42,30 @@ export class LongProjectStore {
                 "InternalError"
             ).evokeLongException()
         }
-        console.log(data.projects)
 
+        data.projects.push({
+            name : this.projectName,
+            path : this.projectDirectory,
+            created : this.createdAt(new Date())
+        })
+        console.log(data)
+
+    }
+
+    private createdAt = (date:Date):string => {
+        let dateString = ""
+        let values = [
+            date.getDate(),
+            date.getMonth(),
+            date.getFullYear()
+        ]
+        for(let dateIndex=0; dateIndex<values.length; dateIndex++){
+            dateString += values[dateIndex]
+            if(dateIndex != (values.length - 1)){
+                dateString += "-"
+            }
+        }
+        return dateString
     }
 
     private isFileEmpty = (path:string):boolean => {
