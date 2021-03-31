@@ -7,7 +7,7 @@ import {LongLexicalAnalyser} from './lexer';
 import {LongCommand} from './command/command';
 import {LongProject} from './project/project';
 import {LongApplication} from './project/run';
-import { LongProjectList } from './project/list';
+import {LongProjectList} from './project/list';
 
 /**
  *
@@ -105,8 +105,8 @@ class LongArgumentParser {
         const project = LongProject.createLongProject();
       } else if (this.arguments[0] == 'run') {
         const application = new LongApplication(cwd());
-      } else if(this.arguments[0] == "list"){
-        const list = new LongProjectList()
+      } else if (this.arguments[0] == 'list') {
+        const list = new LongProjectList();
       }
     }
     return undefined;
