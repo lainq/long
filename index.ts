@@ -8,6 +8,7 @@ import {LongCommand} from './command/command';
 import {LongProject} from './project/project';
 import {LongApplication} from './project/run';
 import {LongProjectList} from './project/list';
+import {createLongInteractiveRepl} from './shell/shell'
 
 /**
  *
@@ -107,6 +108,8 @@ class LongArgumentParser {
         const application = new LongApplication(cwd());
       } else if (this.arguments[0] == 'list') {
         const list = new LongProjectList();
+      } else if(this.arguments[0] == "shell"){
+        createLongInteractiveRepl()
       }
     }
     return undefined;
