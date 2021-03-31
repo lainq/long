@@ -1,4 +1,4 @@
-import { yellow } from "chalk";
+import { green, yellow, red } from "chalk";
 import { readFileSync, existsSync, writeFileSync } from "fs";
 import { join } from "path";
 import { table as Table } from 'table'
@@ -45,10 +45,34 @@ export class LongProjectList {
      * @param project All the projects
      * @returns Dummy value
      */
-    private throwProjectList = (project:Array<Object>):boolean => {
+    private throwProjectList = (project:Array<any>):boolean => {
+        const outputArray:Array<Array<any>> = new Array()
         for(let projectIndex=0; projectIndex<project.length; projectIndex++){
-            console.log(project)
+            outputArray[projectIndex] = new Array()
+            const currentProject = project[projectIndex]
+
+            outputArray[projectIndex][0] = currentProject.name
+            outputArray[projectIndex][1] = this.checkFileExistence(currentProject.path) ? green(
+                currentProject.path
+            ) : red(currentProject.path)
+            outputArray[projectIndex][2] = currentProject.created
         }
+
+        // create a table representation
+        const table = Table(outputArray, { 
+            columns: {
+              0: {
+                width: 10
+              },
+              1: {
+                width: 50 
+              },
+              2: {
+                width: 10  
+              }
+            }
+          })
+        console.log(table)
         return true
     }
 
