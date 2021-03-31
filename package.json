@@ -19,7 +19,7 @@
   "dependencies": {
     "@types/chalk": "^2.2.0",
     "@types/node": "^14.14.37",
-    "chalk": "^4.1.0",
+    "chalk": "^4.1.0"
   },
   "bin": {
     "long": "./dist/index.js"

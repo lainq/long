@@ -5,6 +5,7 @@ import {join} from 'path';
 import {readdirSync, mkdir, writeFile} from 'fs';
 
 import {LongException} from '../exception/error';
+import { LongProjectStore } from './store'
 
 
 // input interface used to get the
@@ -30,6 +31,10 @@ export class LongProject {
     this.projectDirectory = this.isValidDirectory(directory);
 
     this.createProjectFiles();
+ 
+    const store = new LongProjectStore(this.projectName, this.projectDirectory)
+    store.storeProjectInformation()
+
     stdout.write(
       green(`Project successfully created at ${this.projectDirectory}`)
     );
