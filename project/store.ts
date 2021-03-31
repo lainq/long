@@ -1,5 +1,7 @@
 import { join } from "path";
-import {writeFileSync, existsSync} from 'fs'
+import {writeFileSync, existsSync, readFileSync, mkdirSync} from 'fs'
+
+import { LongException } from '../exception/error'
 
 export class LongProjectStore {
     private readonly projectName:string
@@ -21,8 +23,38 @@ export class LongProjectStore {
 
     public storeProjectInformation = () => {
         const store = join(__dirname, "json", "store.json")
-        if(!this.checkFileExistence(store)){
-            writeFileSync(store, JSON.stringify({}))
+        if(!this.checkFileExistence(join(__dirname, "json"))){
+            mkdirSync(join(__dirname, "json"))
+        }
+
+        if(!this.checkFileExistence(store) || !this.isFileEmpty(store)){
+            writeFileSync(store, JSON.stringify({
+                projects : []
+            }))
+        }
+        
+        const data = JSON.parse(readFileSync(store).toString())
+        if(!Object.keys(data).includes("projects")){
+            const exception = new LongException(
+                "Process aborted due to an internal error",
+                "Try creating a new project",
+                "InternalError"
+            ).evokeLongException()
+        }
+        console.log(data.projects)
+
+    }
+
+    private isFileEmpty = (path:string):boolean => {
+        if(!this.checkFileExistence(path)){
+            return false
+        }
+        const data = readFileSync(path).toString()
+        try{
+            let json = JSON.parse(data)
+            return true
+        } catch(error) {
+            return false
         }
     }
 }
