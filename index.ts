@@ -7,7 +7,6 @@ import {LongLexicalAnalyser} from './lexer';
 import {LongCommand} from './command/command';
 import {LongProject} from './project/project';
 import {LongApplication} from './project/run';
-import { LongShell } from './shell/shell';
 
 /**
  *
@@ -44,6 +43,7 @@ export const createLongLexer = (filename: string) => {
       const tokens = lexer.createLexicalAnalyser();
 
       const commands = new LongCommand(tokens);
+      process.exit();
     }
   });
 };
@@ -104,8 +104,8 @@ class LongArgumentParser {
         const project = LongProject.createLongProject();
       } else if (this.arguments[0] == 'run') {
         const application = new LongApplication(cwd());
-      } else if(this.arguments[0] == "shell"){
-        const shell = new LongShell()
+      } else if(this.arguments[0] == "list"){
+        
       }
     }
     return undefined;

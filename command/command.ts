@@ -113,6 +113,6 @@ export class LongCommand {
         }
       }
     }
-    process.exit();
+
   };
 }
