@@ -19,9 +19,9 @@
   "dependencies": {
     "@types/chalk": "^2.2.0",
     "@types/node": "^14.14.37",
-    "@types/readline-sync": "^1.4.3",
+    "@types/table": "^6.0.0",
     "chalk": "^4.1.0",
-    "readline-sync": "^1.4.10"
+    "table": "^6.0.9"
   },
   "bin": {
     "long": "./dist/index.js"
