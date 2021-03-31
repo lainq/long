@@ -1,23 +1,25 @@
-import { cyan, yellow } from 'chalk'
+import { yellow } from 'chalk'
+import { stdout, stdin } from 'process'
 import { createInterface, Interface } from 'readline'
-import { stdin, stdout } from 'process'
 
 export class LongShell {
     private readlineInterface:Interface
 
-    constructor() {
+    constructor(){
         this.readlineInterface = createInterface({
             input : stdin,
             output : stdout
         })
 
-        this.createLongShell(this.readlineInterface)
-        process.exit()
+        this.createShellPrompt(this.readlineInterface)
     }
 
-    public createLongShell = (readlineInterface:Interface):void => {]\
-        readlineInterface.question(cyan("long >>>"), (command) => {
-            
+    public createShellPrompt = (readlineInterface:Interface):void => {
+        readlineInterface.question(">>>" , (command) => {
+            if(command == ".exit"){
+                readlineInterface.close()
+            }
+            this.createShellPrompt(readlineInterface)
         })
     }
 }
