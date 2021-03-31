@@ -8,6 +8,8 @@ export class LongProjectStore {
     private readonly projectName:string
     private projectDirectory:string
 
+    public store:string = join(__dirname, "json", "store.json")
+
     constructor(name, directory){
         this.projectName = name;
         this.projectDirectory = directory
@@ -23,7 +25,7 @@ export class LongProjectStore {
     }
 
     public storeProjectInformation = () => {
-        const store = join(__dirname, "json", "store.json")
+        const store = this.store
         if(!this.checkFileExistence(join(__dirname, "json"))){
             mkdirSync(join(__dirname, "json"))
         }
@@ -48,8 +50,13 @@ export class LongProjectStore {
             path : this.projectDirectory,
             created : this.createdAt(new Date())
         })
-        console.log(data)
+        
+        this.writeFile(this.store, data)
 
+    }
+
+    public writeFile = (store, data) => {
+        writeFileSync(store, JSON.stringify(data))
     }
 
     private createdAt = (date:Date):string => {
