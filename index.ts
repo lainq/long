@@ -8,7 +8,7 @@ import {LongCommand} from './command/command';
 import {LongProject} from './project/project';
 import {LongApplication} from './project/run';
 import {LongProjectList} from './project/list';
-import {createLongInteractiveRepl} from './shell/shell.js'
+import {createLongInteractiveRepl} from './shell/shell.js';
 
 /**
  *
@@ -108,14 +108,14 @@ class LongArgumentParser {
         const application = new LongApplication(cwd());
       } else if (this.arguments[0] == 'list') {
         const list = new LongProjectList();
-      } else if(this.arguments[0] == "shell"){
+      } else if (this.arguments[0] == 'shell') {
         createLongInteractiveRepl((data) => {
           const lexer = new LongLexicalAnalyser(data);
           const tokens = lexer.createLexicalAnalyser();
 
           const commands = new LongCommand(tokens);
-          stdout.write("\n")
-        })
+          stdout.write('\n');
+        });
       }
     }
     return undefined;
