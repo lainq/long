@@ -8,7 +8,6 @@ import {LongCommand} from './command/command';
 import {LongProject} from './project/project';
 import {LongApplication} from './project/run';
 import {LongProjectList} from './project/list';
-import {createLongInteractiveRepl} from './shell/shell.js';
 
 /**
  *
@@ -31,7 +30,7 @@ export const createLongLexer = (filename: string) => {
     return fileNotFound;
   }
 
-  readFile(filename, (error: NodeJS.ErrnoException, data: Buffer) => {
+  readFile(filename, (error: NodeJS.ErrnoException | null, data: Buffer) => {
     if (error) {
       const exception = new LongException(
         'An Error occured while reading the file',
@@ -109,13 +108,13 @@ class LongArgumentParser {
       } else if (this.arguments[0] == 'list') {
         const list = new LongProjectList();
       } else if (this.arguments[0] == 'shell') {
-        createLongInteractiveRepl((data) => {
-          const lexer = new LongLexicalAnalyser(data);
-          const tokens = lexer.createLexicalAnalyser();
+        // createLongInteractiveRepl((data) => {
+        //   const lexer = new LongLexicalAnalyser(data);
+        //   const tokens = lexer.createLexicalAnalyser();
 
-          const commands = new LongCommand(tokens);
-          stdout.write('\n');
-        });
+        //   const commands = new LongCommand(tokens);
+        //   stdout.write('\n');
+        // });
       }
     }
     return undefined;

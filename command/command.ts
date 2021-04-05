@@ -7,6 +7,7 @@ import {Position} from '../lexer';
 export class LongCommand {
   private readonly commandList: Array<Array<Token>>;
   public currentASCIICharacter: number = 0;
+  public outputList:any = []
 
   /**
    * @constructor
@@ -107,6 +108,7 @@ export class LongCommand {
               this.currentASCIICharacter
             );
             stdout.write(asciiCharacter);
+            this.outputList.push(asciiCharacter)
           } else if (currentToken.tokenType == 'clear') {
             this.currentASCIICharacter = 0;
           }
