@@ -4,7 +4,8 @@
   "description": "A simple programming language :winK;",
   "main": "index.ts",
   "scripts": {
-    "start": "tsc server.ts --outDir dist --esModuleInterop true & node dist/server"
+    "start" : "node dist/server.js",
+    "build": "tsc server.ts --outDir dist --esModuleInterop true & node dist/server"
   },
   "repository": {
     "type": "git",
@@ -36,5 +37,6 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "engines": { "node": "14.5.0" }
 }
