@@ -1,12 +1,9 @@
 import setuptools
 
-
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-
 DEPENDENCIES = ["clint", "requests"]
-
 
 setuptools.setup(
     name="long-cli",  # Replace with your own username
@@ -20,8 +17,8 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=DEPENDENCIES,
     entry_points={"console_scripts": [
-        'long = cli:initialize_long_cli', 
-        ]},
+        'long = cli:initialize_long_cli',
+    ]},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

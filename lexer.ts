@@ -43,7 +43,7 @@ export class LongLexicalAnalyser {
    * @constructor
    * @param fileData the data in the file
    */
-  constructor(fileData) {
+  constructor(fileData:string) {
     this.fileData = fileData.toString();
     this.position = {position: 0, tail: false};
     this.character = this.setCurrentCharacter();
