@@ -7,7 +7,7 @@ DEPENDENCIES = ["clint", "requests"]
 
 setuptools.setup(
     name="long-cli",  # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="P Pranav Baburaj",
     author_email="code-roller@googlegroups.com",
     description="A simple esoteric programming language",
