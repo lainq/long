@@ -2,7 +2,24 @@ node_modules/
 
 json/
 
-cpp.bat
+.dub
+docs.json
+__dummy.html
+docs/
+/long
+long.so
+long.dylib
+long.dll
+long.a
+long.lib
+long-test-*
+*.exe
+*.o
+*.obj
+*.lst
+
+
+d.bat
 # Logs
 logs
 *.log
