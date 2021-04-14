@@ -2,6 +2,7 @@ node_modules/
 
 json/
 
+cpp.bat
 # Logs
 logs
 *.log
